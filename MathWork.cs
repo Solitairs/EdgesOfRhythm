@@ -7,6 +7,6 @@ public MathWork : MonoBehaviour{
     int road=1;
   };//Save every note's real time position information
   public NotePos GetIPos(float NTime, float DTime, float ISpeed, int Iroad, int Droad){
-    
+    //work out it,need to know speed-change list and var-name
   }//Instantiate
 }
