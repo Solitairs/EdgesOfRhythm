@@ -17,20 +17,16 @@ N创建音符
 public class GameController : MonoBehaviour
 {
     public TMP_InputField field;
-    public UnityEngine.Object noteCreater;
+    public UnityEngine.Object noteCreater,NotesList,CmdsList,Settings;
     public Transform canvas;
-    public UnityEngine.Object NotesList,CmdsList;
     public static ERSRegister register;
     public static ERSCommand cmd;
     private AudioSource Audio;
     void Start()
     {
         register = new ERSRegister();
+        register.Intialize();
         cmd = new ERSCommand();
-        for(int i = 0; i < 2; i++)
-        {
-            Debug.Log(i);
-        }
         Audio = GetComponent<AudioSource>();
         //加载音乐
         string path;
@@ -43,6 +39,7 @@ public class GameController : MonoBehaviour
         path += "/Music";
         //这里Music是一个与Assets同级的文件夹（用来存放音乐）,local:音乐名称，.wav：音乐后缀
         bool finded = false;
+        string name = "";
         if (Directory.Exists(path))
         {
             DirectoryInfo direction = new DirectoryInfo(path);
@@ -53,6 +50,7 @@ public class GameController : MonoBehaviour
                 if (files[i].Name.EndsWith(".wav"))
                 {
                     finded = true;
+                    name = files[i].Name;
                     local = files[i].Name;
                     path += "/" + local;
                     break;
@@ -61,8 +59,13 @@ public class GameController : MonoBehaviour
         }
         if (finded)
         {
+            register.meta.Name = name;
             //使用www类加载播放
             StartCoroutine(Load(path));
+        }
+        else
+        {
+            Debug.LogError("No Musics");
         }
     }
     IEnumerator Load(string path)
@@ -96,6 +99,9 @@ public class GameController : MonoBehaviour
     }
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Tab)) {
+            Instantiate(Settings, canvas);
+        }
         if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.N))
         {
             if(GameObject.FindGameObjectWithTag("List")==null)showNotesList();
@@ -124,9 +130,9 @@ public class GameController : MonoBehaviour
         {
             Audio.time += 1.5f;
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && GameObject.FindGameObjectWithTag("Settings") == null && GameObject.FindGameObjectWithTag("List") == null)
         {
-            Audio.pitch = GetComponent<AudioSource>().pitch*-1+1;//Stop or play
+            Audio.pitch = GetComponent<AudioSource>().pitch*-1+1;//Stop or Start
         }
         if (Audio.pitch == 0)
         {

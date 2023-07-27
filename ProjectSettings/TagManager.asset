@@ -6,6 +6,7 @@ TagManager:
   tags:
   - NoteCreater
   - List
+  - Settings
   layers:
   - Default
   - TransparentFX

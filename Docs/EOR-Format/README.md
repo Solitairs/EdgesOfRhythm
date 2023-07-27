@@ -10,9 +10,13 @@
 ## \[注册区]
 ### 变量
 + **基本信息**
-    + 乐曲相对路径 *string*
+    + 曲名 *string*
     + 曲师名 *string*
     + 谱师名 *string*
+    + 画师名 *string*
+    + BPM *float*
+    + offset *float*
+    + 1/P(间距) *int*
 ## \[音符区]
 ### 变量
 + **音符列表**
