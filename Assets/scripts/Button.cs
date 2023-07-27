@@ -6,6 +6,6 @@ public class Button : MonoBehaviour
 {
     public void addNoteNow()
     {
-        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().addNoteNow();
+        GameObject.FindGameObjectWithTag("NoteCreater").GetComponent<CreateNote>().addNoteNow();
     }
 }

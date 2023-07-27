@@ -8,22 +8,22 @@ public class ERSRegister : MonoBehaviour
     public int noteNum = 0;
     public struct Notes
     {
-        public int angleType, hurtType, deterRoad, Type;
+        public int rotateType, hurtType, deterRoad, Type;
         public float deterTime,startSpeed;
-        public Notes(int ntype, int nangleType,int nhurtType,int ndeterRoad,float nspeed,float ndeterTime)
+        public Notes(int type, int rotateType, int hurtType,int deterRoad,float startSpeed, float deterTime)
         {
-            Type = ntype;
-            angleType = nangleType;
-            hurtType = nhurtType;
-            deterRoad = ndeterRoad;
-            startSpeed = nspeed;
-            deterTime = ndeterTime;
+            this.Type = type;
+            this.rotateType = rotateType;
+            this.hurtType = hurtType;
+            this.deterRoad = deterRoad;
+            this.startSpeed = startSpeed;
+            this.deterTime = deterTime;
         }
     }
-    public Notes[] notes=new Notes[2001];
+    public Notes[] notes=new Notes[4001];
     public void addNote(Notes note)
     {
-        if (noteNum > 2000) return;//³¬ÏÞ
+        if (noteNum > 4000) return;//³¬ÏÞ
         notes[noteNum] = note;
         noteNum++;
     }

@@ -10,26 +10,26 @@ public class setNotesInformations : MonoBehaviour
     public Object text;
     void Start()
     {
-        ERSRegister register = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().register;
+        ERSRegister register = GameController.register;
         register.sort();
         GetComponent<RectTransform>().sizeDelta = new Vector2(GetComponent<RectTransform>().sizeDelta.x, register.noteNum * 20 + 2);
-        string color = "", rotate = "", hurt = "", road = "", speed = "";
-        for(int i=0;i< register.noteNum; i++)
+        for (int i = 0; i < register.noteNum; i++)
         {
             GameObject temp = Instantiate(text, transform) as GameObject;
-            DataNote data=temp.GetComponent<DataNote>();
-            data.rotate.value = register.notes[i].angleType;
+            DataNote data = temp.GetComponent<DataNote>();
+            data.rotate.value = register.notes[i].rotateType;
             data.time.text = register.notes[i].deterTime.ToString();
+            data.speed.text = register.notes[i].startSpeed.ToString();
             data.road.value = register.notes[i].deterRoad;
             data.hurt.value = register.notes[i].hurtType;
             data.type.value = register.notes[i].Type;
-            temp.GetComponent<DataNote>().id=i;
-            string g = "";
-            for(int o=0; o< (6 - i.ToString().Length); o++)
+            data.id = i;
+            string t = "";
+            for (int j = 0; j < 7 - i.ToString().Length; j++)
             {
-                g += " ";
+                t += " ";
             }
-            temp.GetComponent<TextMeshProUGUI>().text = "        ID:" + i.ToString() + g + "Time:                                                                                 Speed:";
+            temp.GetComponent<TextMeshProUGUI>().text = "                                                           ID:" + i.ToString() + t + "Time:                                                                                                    Speed:";
         }
     }
     public void Update()
@@ -43,20 +43,26 @@ public class setNotesInformations : MonoBehaviour
     {
         for (int i = 0; i < transform.childCount; i++)
             Destroy(transform.GetChild(i).gameObject);
-        ERSRegister register = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().register;
+        ERSRegister register = GameController.register;
         register.sort();
         GetComponent<RectTransform>().sizeDelta = new Vector2(GetComponent<RectTransform>().sizeDelta.x, register.noteNum * 20 + 2);
-        string color = "", rotate = "", hurt = "", road = "", speed = "";
         for (int i = 0; i < register.noteNum; i++)
         {
             GameObject temp = Instantiate(text, transform) as GameObject;
             DataNote data = temp.GetComponent<DataNote>();
-            data.rotate.value = register.notes[i].angleType;
+            data.rotate.value = register.notes[i].rotateType;
             data.time.text = register.notes[i].deterTime.ToString();
+            data.speed.text = register.notes[i].startSpeed.ToString();
             data.road.value = register.notes[i].deterRoad;
             data.hurt.value = register.notes[i].hurtType;
             data.type.value = register.notes[i].Type;
-            temp.GetComponent<DataNote>().id = i;
+            data.id = i;
+            string t = "";
+            for(int j=0; j<7-i.ToString().Length; j++)
+            {
+                t += " ";
+            }
+            temp.GetComponent<TextMeshProUGUI>().text = "                                                           ID:"+ i.ToString()+t+"Time:                                                                                                    Speed:";
         }
     }
 }

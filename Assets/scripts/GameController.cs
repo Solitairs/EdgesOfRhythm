@@ -8,7 +8,8 @@ using UnityEngine;
 using UnityEngine.SocialPlatforms;
 using UnityEngine.UIElements;
 /*
-S保存当前指令或音符
+^N查看音符列表
+^S保存当前指令或音符
 N创建音符
 左右箭头跳时间1.5s
 空格暂停或播放
@@ -19,8 +20,8 @@ public class GameController : MonoBehaviour
     public UnityEngine.Object noteCreater;
     public Transform canvas;
     public UnityEngine.Object NotesList,CmdsList;
-    public ERSRegister register;
-    public ERSCommand cmd;
+    public static ERSRegister register;
+    public static ERSCommand cmd;
     private AudioSource Audio;
     void Start()
     {
@@ -83,17 +84,10 @@ public class GameController : MonoBehaviour
             }
         }
     }
-    private bool SaveAgain = false;
+    public static bool SaveAgain = false;
     public void showNotesList()
     {
         Instantiate(NotesList, canvas);
-    }
-    public void addNoteNow()
-    {
-        CreateNote tempObject = GameObject.FindGameObjectWithTag("NoteCreater").GetComponent<CreateNote>();
-        if (SaveAgain) register.delNote(register.noteNum - 1);
-        register.addNote(new ERSRegister.Notes(tempObject.Type.value, tempObject.rotateType.value, tempObject.hurtType.value, tempObject.deterRoad.value, Convert.ToSingle(tempObject.StartSpeed.text), Convert.ToSingle(tempObject.deterTime.text)));
-        SaveAgain = true;
     }
     private void delNoteCreater()
     {
@@ -106,11 +100,7 @@ public class GameController : MonoBehaviour
         {
             if(GameObject.FindGameObjectWithTag("List")==null)showNotesList();
         }
-        if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.S))
-        {
-            if (GameObject.FindGameObjectWithTag("NoteCreater") != null) addNoteNow();
-        }
-        if(Input.GetKeyDown(KeyCode.Z))
+        else if(Input.GetKeyDown(KeyCode.N))
         {
             SaveAgain = false;
             if (GameObject.FindGameObjectWithTag("NoteCreater")!=null)

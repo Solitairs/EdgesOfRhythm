@@ -10,103 +10,95 @@ public class ERSCommand : MonoBehaviour
         public int type;
         public float time;
         public int number;
-        public CommandIndex(int ntype, float ntime, int nnumber)
+        public CommandIndex(int type, float time, int number)
         {
-            type=ntype;
-            time=ntime;
-            number=nnumber;
+            this.type =type;
+            this.time =time;
+            this.number =number;
         }
     };
     public struct c01 //激活音符
     {
         public int id;
         public float startSpeed;
-        public c01(int vid,float vstartSpeed)
+        public c01(int id, float startSpeed)
         {
-            id = vid;
-            startSpeed = vid;
+            this.id = id;
+            this.startSpeed = id;
         }
-    }
+    };
     public struct c02 //更改音符速度
     {
         public int id;
         public float toSpeed;
-        public c02(int vid,float vtoSpeed)
+        public c02(int id,float toSpeed)
         {
-            id = vid;
-            toSpeed = vtoSpeed;
+            this.id = id;
+            this.toSpeed = toSpeed;
         }
-    }
+    };
     public struct c03 //随时间更改背景颜色
     {
-        public Color color;
+        public float[] color;
         public float duringTime;
-        public c03(Color vcolor, float vduringTime)
+        public c03(Color color, float duringTime)
         {
-            color = vcolor;
-            duringTime = vduringTime;
+            this.color = new float[4];
+            this.color[0] = color.r; color[1] = color.g; color[2] = color.b; color[3] = color.a;
+            this.duringTime = duringTime;
         }
-    }
-    public struct c04 //更改背景颜色
+    };
+    public struct c04 //随时间更改框架和轨道颜色
     {
-        public Color color;
-        public c04(Color vcolor)
-        {
-            color = vcolor;
-        }
-    }
-    public struct c05 //载入雨水特效
-    {
-        public Color color;
-        public float gravity;
-        public c05(Color vcolor,float vgravity)
-        {
-            color=vcolor;
-            gravity = vgravity;
-        }
-    }
-    //x06 关闭雨水特效
-    public struct c07 //旋转谱面
-    {
-        public int id;
-        public float toAngle;
+        public float[] color;
         public float duringTime;
-        public c07(int nid,float ntoAngle,float nduringTime)
+        public c04(Color color, float duringTime)
         {
-            id = nid;
-            toAngle = ntoAngle;
-            duringTime = nduringTime;
+            this.color = new float[4];
+            this.color[0] = color.r; color[1] = color.g; color[2] = color.b; color[3] = color.a;
+            this.duringTime = duringTime;
         }
-    }
-    public struct c08 //旋转镜头
+    };
+    public struct c05 //开启或关闭轨道响应
     {
-        public float toAngle;
-        public float duringTime;
-        public c08(float ntoAngle,float nduringTime)
+        public bool oc;
+        public c05(bool oc)
         {
-            toAngle = ntoAngle;
-            duringTime = nduringTime;
+            this.oc = oc;
         }
-    }
-    //x09 增加一个eyes特效
-    //x10 眨
-    //x11 删除eyes特效
-    //剩下的下次再做
+    };
+    public struct c06 //闪烁轨道
+    {
+        public float duringTime;
+        public c06(float duringTime)
+        {
+            this.duringTime = duringTime;
+        }
+    };
+    public struct c07 //闪烁框架
+    {
+        public float duringTime;
+        public c07(float duringTime)
+        {
+            this.duringTime = duringTime;
+        }
+    };
     ///////////////////////////////////////////////////////////////   Register and Function   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     CommandIndex[] cindex = new CommandIndex[10001]; int cmdNum = 0;
-    c01[] x01 = new c01[2001]; int n1 = 0;
-    c02[] x02 = new c02[2001]; int n2 = 0;
-    c03[] x03 = new c03[2001]; int n3 = 0;
-    c04[] x04 = new c04[2001]; int n4 = 0;
-    c05[] x05 = new c05[2001]; int n5 = 0;
-    c07[] x07 = new c07[2001]; int n7 = 0;
+    c01[] x01 = new c01[4001]; int n1 = 0;
+    c02[] x02 = new c02[4001]; int n2 = 0;
+    c03[] x03 = new c03[4001]; int n3 = 0;
+    c04[] x04 = new c04[4001]; int n4 = 0;
+    c05[] x05 = new c05[4001]; int n5 = 0;
+    c06[] x06 = new c06[4001]; int n6 = 0;
+    c07[] x07 = new c07[4001]; int n7 = 0;
     public void commandOut()
     {
-
+        //throw error
     }
     public void throwE(string msg)
     {
-
+        //throw error
     }
     public void delCmd(int id)
     {
@@ -160,16 +152,24 @@ public class ERSCommand : MonoBehaviour
     }
     public void addx05(float time, c05 a05)
     {
-        if (cmdNum > 10000 || n5 > 2000) commandOut();
-        cindex[cmdNum] = new CommandIndex(5, time, n5);
+        if (cmdNum > 15000 || n5 > 2000) commandOut();
+        cindex[cmdNum] = new CommandIndex(4, time, n4);
         x05[n5] = a05;
         cmdNum++;
         n5++;
     }
+    public void addx06(float time, c06 a06)
+    {
+        if (cmdNum > 10000 || n6 > 2000) commandOut();
+        cindex[cmdNum] = new CommandIndex(4, time, n4);
+        x06[n6] = a06;
+        cmdNum++;
+        n6++;
+    }
     public void addx07(float time, c07 a07)
     {
         if (cmdNum > 10000 || n7 > 2000) commandOut();
-        cindex[cmdNum] = new CommandIndex(7, time, n7);
+        cindex[cmdNum] = new CommandIndex(4, time, n4);
         x07[n7] = a07;
         cmdNum++;
         n7++;
