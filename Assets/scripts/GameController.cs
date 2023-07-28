@@ -9,21 +9,34 @@ using UnityEngine.SocialPlatforms;
 using UnityEngine.UIElements;
 /*
 ^N查看音符列表
-^S保存当前指令或音符
+AltS保存当前指令或音符
+AltO打开
+AltI保存
 N创建音符
 左右箭头跳时间1.5s
 空格暂停或播放
  */
 public class GameController : MonoBehaviour
 {
+    public static int[] Pl;
     public TMP_InputField field;
-    public UnityEngine.Object noteCreater,NotesList,CmdsList,Settings;
+    public UnityEngine.Object noteCreater,NotesList,CmdsList,Settings,Saving,loading;
     public Transform canvas;
     public static ERSRegister register;
     public static ERSCommand cmd;
     private AudioSource Audio;
     void Start()
     {
+        Pl = new int[9];
+        Pl[0] = 2;
+        Pl[1] = 3;
+        Pl[2] = 4;
+        Pl[3] = 6;
+        Pl[4] = 8;
+        Pl[5] = 12;
+        Pl[6] = 16;
+        Pl[7] = 24;
+        Pl[8] = 32;
         register = new ERSRegister();
         register.Intialize();
         cmd = new ERSCommand();
@@ -59,7 +72,6 @@ public class GameController : MonoBehaviour
         }
         if (finded)
         {
-            register.meta.Name = name;
             //使用www类加载播放
             StartCoroutine(Load(path));
         }
@@ -99,14 +111,22 @@ public class GameController : MonoBehaviour
     }
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Tab)) {
+        if (Input.GetKey(KeyCode.LeftAlt) && Input.GetKeyDown(KeyCode.P) && GameObject.FindGameObjectWithTag("Settings") == null && GameObject.FindGameObjectWithTag("List") == null)
+        {
+            Instantiate(Saving, canvas);
+        }
+        if (Input.GetKey(KeyCode.LeftAlt) && Input.GetKeyDown(KeyCode.O) && GameObject.FindGameObjectWithTag("Settings") == null && GameObject.FindGameObjectWithTag("List") == null)
+        {
+            Instantiate(loading, canvas);
+        }
+        if (Input.GetKeyDown(KeyCode.Tab) && GameObject.FindGameObjectWithTag("Settings") == null && GameObject.FindGameObjectWithTag("List") == null) {
             Instantiate(Settings, canvas);
         }
-        if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.N))
+        if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.N) && GameObject.FindGameObjectWithTag("Settings") == null && GameObject.FindGameObjectWithTag("List") == null)
         {
-            if(GameObject.FindGameObjectWithTag("List")==null)showNotesList();
+            showNotesList();
         }
-        else if(Input.GetKeyDown(KeyCode.N))
+        else if(Input.GetKeyDown(KeyCode.N) && GameObject.FindGameObjectWithTag("Settings") == null && GameObject.FindGameObjectWithTag("List") == null)
         {
             SaveAgain = false;
             if (GameObject.FindGameObjectWithTag("NoteCreater")!=null)

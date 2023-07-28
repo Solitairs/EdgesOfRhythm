@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-
+[Serializable]
 public class ERSCommand : MonoBehaviour
 {
     public struct CommandIndex
@@ -84,14 +85,14 @@ public class ERSCommand : MonoBehaviour
         }
     };
     ///////////////////////////////////////////////////////////////   Register and Function   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    CommandIndex[] cindex = new CommandIndex[10001]; int cmdNum = 0;
-    c01[] x01 = new c01[4001]; int n1 = 0;
-    c02[] x02 = new c02[4001]; int n2 = 0;
-    c03[] x03 = new c03[4001]; int n3 = 0;
-    c04[] x04 = new c04[4001]; int n4 = 0;
-    c05[] x05 = new c05[4001]; int n5 = 0;
-    c06[] x06 = new c06[4001]; int n6 = 0;
-    c07[] x07 = new c07[4001]; int n7 = 0;
+    public CommandIndex[] cindex = new CommandIndex[10001]; public int cmdNum = 0;
+    public c01[] x01 = new c01[4001]; public int n1 = 0;
+    public c02[] x02 = new c02[4001]; public int n2 = 0;
+    public c03[] x03 = new c03[4001]; public int n3 = 0;
+    public c04[] x04 = new c04[4001]; public int n4 = 0;
+    public c05[] x05 = new c05[4001]; public int n5 = 0;
+    public c06[] x06 = new c06[4001]; public int n6 = 0;
+    public c07[] x07 = new c07[4001]; public int n7 = 0;
     public void commandOut()
     {
         //throw error

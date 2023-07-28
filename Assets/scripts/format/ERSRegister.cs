@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.Rendering;
-
+[Serializable]
 public class ERSRegister : MonoBehaviour
 {
     public int noteNum = 0;
-    public static int[] P;
     public struct Meta
     {
         public string Name,Difficulty,SpectrumCreator,MusicCreator,BackgroundCreator;
@@ -44,19 +43,9 @@ public class ERSRegister : MonoBehaviour
     public Notes[] notes=new Notes[4001];
     public void Intialize()
     {
-        P = new int[9];
-        P[0] = 2;
-        P[1] = 3;
-        P[2] = 4;
-        P[3] = 6;
-        P[4] = 8;
-        P[5] = 12;
-        P[6] = 16;
-        P[7] = 24;
-        P[8] = 32;
         noteNum = 0;
         notes = new Notes[4001];
-        meta = new Meta("nobody","?","nobody","nobody","nobody",0,60,8,4);
+        meta = new Meta("null","?","nobody","nobody","nobody",0,60,8,4);
 }
     public void addNote(Notes note)
     {
