@@ -4,9 +4,10 @@ using System;
 using UnityEngine;
 using UnityEngine.Rendering;
 [Serializable]
-public class ERSRegister : MonoBehaviour
+public class ERSRegister
 {
     public int noteNum = 0;
+    [Serializable]
     public struct Meta
     {
         public string Name,Difficulty,SpectrumCreator,MusicCreator,BackgroundCreator;
@@ -25,6 +26,7 @@ public class ERSRegister : MonoBehaviour
             this.PValue = PValue;
         }
     };
+    [Serializable]
     public struct Notes
     {
         public int rotateType, hurtType, deterRoad, Type;

@@ -28,14 +28,11 @@ public class SavingOrLoading : MonoBehaviour
     public void LoadDataByJSON()
     {
         string directory = savePath.text;
-        if (File.Exists(directory))
-        {
             string json = File.ReadAllText(directory + ".eorsr");
             GameController.register = JsonUtility.FromJson<ERSRegister>(json);
             json = File.ReadAllText(directory + ".eorsc");
             GameController.cmd = JsonUtility.FromJson<ERSCommand>(json);
             Destroy(gameObject);
-        }
     }
     private void Update()
     {

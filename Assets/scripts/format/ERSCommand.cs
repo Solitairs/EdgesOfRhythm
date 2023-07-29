@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 [Serializable]
-public class ERSCommand : MonoBehaviour
+public class ERSCommand
 {
+    [Serializable]
     public struct CommandIndex
     {
         public int type;
@@ -18,6 +19,7 @@ public class ERSCommand : MonoBehaviour
             this.number =number;
         }
     };
+    [Serializable]
     public struct c01 //激活音符
     {
         public int id;
@@ -28,6 +30,7 @@ public class ERSCommand : MonoBehaviour
             this.startSpeed = id;
         }
     };
+    [Serializable]
     public struct c02 //更改音符速度
     {
         public int id;
@@ -38,6 +41,7 @@ public class ERSCommand : MonoBehaviour
             this.toSpeed = toSpeed;
         }
     };
+    [Serializable]
     public struct c03 //随时间更改背景颜色
     {
         public float[] color;
@@ -49,6 +53,7 @@ public class ERSCommand : MonoBehaviour
             this.duringTime = duringTime;
         }
     };
+    [Serializable]
     public struct c04 //随时间更改框架和轨道颜色
     {
         public float[] color;
@@ -60,6 +65,7 @@ public class ERSCommand : MonoBehaviour
             this.duringTime = duringTime;
         }
     };
+    [Serializable]
     public struct c05 //开启或关闭轨道响应
     {
         public bool oc;
@@ -68,6 +74,7 @@ public class ERSCommand : MonoBehaviour
             this.oc = oc;
         }
     };
+    [Serializable]
     public struct c06 //闪烁轨道
     {
         public float duringTime;
@@ -76,6 +83,7 @@ public class ERSCommand : MonoBehaviour
             this.duringTime = duringTime;
         }
     };
+    [Serializable]
     public struct c07 //闪烁框架
     {
         public float duringTime;
