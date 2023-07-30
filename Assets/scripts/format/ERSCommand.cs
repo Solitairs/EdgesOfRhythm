@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static ERSRegister;
+
 [Serializable]
 public class ERSCommand
 {
@@ -23,11 +25,9 @@ public class ERSCommand
     public struct c01 //激活音符
     {
         public int id;
-        public float startSpeed;
-        public c01(int id, float startSpeed)
+        public c01(int id)
         {
             this.id = id;
-            this.startSpeed = id;
         }
     };
     [Serializable]
@@ -182,5 +182,37 @@ public class ERSCommand
         x07[n7] = a07;
         cmdNum++;
         n7++;
+    }
+    public class ECmp : IComparer
+    {
+        public int Compare(object x, object y)//降序
+        {
+            CommandIndex a = (CommandIndex)(x);
+            CommandIndex b = (CommandIndex)(y);//然后直接强转（很蠢）
+            if (a.time > b.time) return -1;
+            else if (a.time < b.time) return 1;//大于0为x大于y
+            else return 0;//等于0为x等于y
+        }
+    }
+    public class SCmp : IComparer
+    {
+        public int Compare(object x, object y)//升序
+        {
+            CommandIndex a = (CommandIndex)(x);
+            CommandIndex b = (CommandIndex)(y);//然后直接强转（很蠢）
+            if (a.time < b.time) return -1;
+            else if (a.time > b.time) return 1;//大于0为x大于y
+            else return 0;//等于0为x等于y
+        }
+    }
+    public void sort()//ID降序
+    {
+        IComparer Cmp = new ECmp();
+        Array.Sort(cindex, 0, cmdNum, Cmp);
+    }
+    public void SaveSort()//ID升序
+    {
+        IComparer Cmp = new ECmp();
+        Array.Sort(cindex, 0, cmdNum, Cmp);
     }
 }

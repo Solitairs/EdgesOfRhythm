@@ -10,6 +10,27 @@ public class SavingOrLoading : MonoBehaviour
     // Start is called before the first frame update
     public void SaveDataByJSON() //保存
     {
+        //优化信息
+        GameController.register.SaveSort();
+        GameController.cmd.SaveSort();
+        Dictionary<int,int> ChangeID = new Dictionary<int,int>();
+        for(int i=0;i< GameController.register.noteNum; i++)
+        {
+            int tid = GameController.register.notes[i].ID;
+            GameController.register.notes[i].ID = i;
+            ChangeID.Add(tid, i);
+        }
+        for (int i = 0; i < GameController.register.noteNum; i++)
+        {
+            if (ChangeID.ContainsKey(GameController.cmd.x01[i].id)) GameController.cmd.x01[i].id = ChangeID[GameController.cmd.x01[i].id];
+            else Debug.LogError("Notes have no id:" + GameController.cmd.x01[i].id.ToString() + "  From Cmds.");
+        }
+        for (int i = 0; i < GameController.register.noteNum; i++)
+        {
+            if (ChangeID.ContainsKey(GameController.cmd.x02[i].id)) GameController.cmd.x02[i].id = ChangeID[GameController.cmd.x02[i].id];
+            else Debug.LogError("Notes have no id:" + GameController.cmd.x02[i].id.ToString() + "  From Cmds.");
+        }
+        //开始序列化
         string directory = savePath.text + "\\";
         if (Directory.Exists(directory) == false)
         {
@@ -28,11 +49,11 @@ public class SavingOrLoading : MonoBehaviour
     public void LoadDataByJSON()
     {
         string directory = savePath.text;
-            string json = File.ReadAllText(directory + ".eorsr");
-            GameController.register = JsonUtility.FromJson<ERSRegister>(json);
-            json = File.ReadAllText(directory + ".eorsc");
-            GameController.cmd = JsonUtility.FromJson<ERSCommand>(json);
-            Destroy(gameObject);
+        string json = File.ReadAllText(directory + ".eorsr");
+        GameController.register = JsonUtility.FromJson<ERSRegister>(json);
+        json = File.ReadAllText(directory + ".eorsc");
+        GameController.cmd = JsonUtility.FromJson<ERSCommand>(json);
+        Destroy(gameObject);
     }
     private void Update()
     {

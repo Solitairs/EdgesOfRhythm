@@ -25,11 +25,11 @@ public class setNotesInformations : MonoBehaviour
             data.type.value = register.notes[i].Type;
             data.id = i;
             string t = "";
-            for (int j = 0; j < 7 - i.ToString().Length; j++)
+            for (int j = 0; j < 7 - register.notes[i].ID.ToString().Length; j++)
             {
                 t += " ";
             }
-            temp.GetComponent<TextMeshProUGUI>().text = "                                                           ID:" + i.ToString() + t + "Time:                                                                                                    Speed:";
+            temp.GetComponent<TextMeshProUGUI>().text = "                                                           ID:" + register.notes[i].ID.ToString() + t + "Time:                                                                                                    Speed:";
         }
     }
     public void Update()
@@ -58,11 +58,11 @@ public class setNotesInformations : MonoBehaviour
             data.type.value = register.notes[i].Type;
             data.id = i;
             string t = "";
-            for(int j=0; j<7-i.ToString().Length; j++)
+            for (int j = 0; j < 7 - register.notes[i].ID.ToString().Length; j++)
             {
                 t += " ";
             }
-            temp.GetComponent<TextMeshProUGUI>().text = "                                                           ID:"+ i.ToString()+t+"Time:                                                                                                    Speed:";
+            temp.GetComponent<TextMeshProUGUI>().text = "                                                           ID:" + register.notes[i].ID.ToString() + t + "Time:                                                                                                    Speed:";
         }
     }
 }

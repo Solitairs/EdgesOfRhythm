@@ -3,28 +3,31 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using TMPro;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 using UnityEngine.UIElements;
 /*
 ^N查看音符列表
-AltS保存当前指令或音符
-AltO打开
-AltI保存
+Tab打开设置
+Alt+S保存当前指令或音符
+Alt+O打开
+Alt+P保存
 N创建音符
 左右箭头跳时间1.5s
 空格暂停或播放
  */
 public class GameController : MonoBehaviour
 {
+    public static int mathNoteID = 0;
+    public UnityEngine.UI.Image progress;
     public static int[] Pl;
     public TMP_InputField field;
-    public UnityEngine.Object noteCreater,NotesList,CmdsList,Settings,Saving,loading;
+    public UnityEngine.Object noteCreater,cmdCreater,NotesList,CmdsList,Settings,Saving,loading;
     public Transform canvas;
     public static ERSRegister register;
     public static ERSCommand cmd;
-    private AudioSource Audio;
+    public AudioSource Audio;
+    private bool loadingDone = false;
     void Start()
     {
         Pl = new int[9];
@@ -40,19 +43,14 @@ public class GameController : MonoBehaviour
         register = new ERSRegister();
         register.Intialize();
         cmd = new ERSCommand();
-        Audio = GetComponent<AudioSource>();
         //加载音乐
         string path;
         string local;
         //获取本工程Assets路径
         path = Application.dataPath;
-        //获取与Assets同级文件夹
-        int n = path.LastIndexOf("/");
-        path = path.Substring(0, n);
         path += "/Music";
         //这里Music是一个与Assets同级的文件夹（用来存放音乐）,local:音乐名称，.wav：音乐后缀
         bool finded = false;
-        string name = "";
         if (Directory.Exists(path))
         {
             DirectoryInfo direction = new DirectoryInfo(path);
@@ -63,7 +61,6 @@ public class GameController : MonoBehaviour
                 if (files[i].Name.EndsWith(".wav"))
                 {
                     finded = true;
-                    name = files[i].Name;
                     local = files[i].Name;
                     path += "/" + local;
                     break;
@@ -92,6 +89,7 @@ public class GameController : MonoBehaviour
                 Audio.clip = ww.GetAudioClip();
                 Audio.Play();
                 Audio.pitch = 0;
+                loadingDone = true;
             }
             else
             {
@@ -99,18 +97,32 @@ public class GameController : MonoBehaviour
             }
         }
     }
-    public static bool SaveAgain = false;
     public void showNotesList()
     {
         Instantiate(NotesList, canvas);
     }
     private void delNoteCreater()
     {
-        SaveAgain = false;
         Destroy(GameObject.FindGameObjectWithTag("NoteCreater"));
+    }
+    public void showCmdsList()
+    {
+        Instantiate(CmdsList, canvas);
+    }
+    private void delCmdCreater()
+    {
+        Destroy(GameObject.FindGameObjectWithTag("CmdCreater"));
+    }
+    public static float moveTimeByValue(float time)
+    {
+        time = time / (60 / register.meta.BPM / register.meta.P);
+        time = MathF.Round(time);
+        time = time * (60 / register.meta.BPM / register.meta.P);
+        return time;
     }
     void Update()
     {
+        if(loadingDone)progress.fillAmount = Audio.time / Audio.clip.length;
         if (Input.GetKey(KeyCode.LeftAlt) && Input.GetKeyDown(KeyCode.P) && GameObject.FindGameObjectWithTag("Settings") == null && GameObject.FindGameObjectWithTag("List") == null)
         {
             Instantiate(Saving, canvas);
@@ -128,20 +140,38 @@ public class GameController : MonoBehaviour
         }
         else if(Input.GetKeyDown(KeyCode.N) && GameObject.FindGameObjectWithTag("Settings") == null && GameObject.FindGameObjectWithTag("List") == null)
         {
-            SaveAgain = false;
             if (GameObject.FindGameObjectWithTag("NoteCreater")!=null)
             {
                 CreateNote tempObject= GameObject.FindGameObjectWithTag("NoteCreater").GetComponent<CreateNote>();
-                register.addNote(new ERSRegister.Notes(tempObject.Type.value, tempObject.rotateType.value, tempObject.hurtType.value, tempObject.deterRoad.value, Convert.ToSingle(tempObject.StartSpeed.text), Convert.ToSingle(tempObject.deterTime.text)));
-                delNoteCreater();
-                Instantiate(noteCreater,canvas);
+                tempObject.addNoteNow();
+                tempObject.Start();
             }
             else
             {
-                //还要删掉别的(先跳过)
+                delCmdCreater();
                 Instantiate(noteCreater,canvas);
             }
         }
+        ///////////////
+        if (false && Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.V) && GameObject.FindGameObjectWithTag("Settings") == null && GameObject.FindGameObjectWithTag("List") == null)
+        {
+            showCmdsList();
+        }
+        else if (false&&Input.GetKeyDown(KeyCode.V) && GameObject.FindGameObjectWithTag("Settings") == null && GameObject.FindGameObjectWithTag("List") == null)
+        {
+            if (GameObject.FindGameObjectWithTag("CmdCreater") != null)
+            {
+                CreateCmd tempObject = GameObject.FindGameObjectWithTag("CmdCreater").GetComponent<CreateCmd>();
+                tempObject.addCmdNow();
+                tempObject.Start();
+            }
+            else
+            {
+                delNoteCreater();
+                Instantiate(cmdCreater, canvas);
+            }
+        }
+        //////////////
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             Audio.time -= 1.5f;
@@ -164,6 +194,10 @@ public class GameController : MonoBehaviour
         else
         {
             field.text=Audio.time.ToString();
+        }
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            Application.Quit();
         }
     }
 }

@@ -7,6 +7,7 @@ TagManager:
   - NoteCreater
   - List
   - Settings
+  - CmdCreater
   layers:
   - Default
   - TransparentFX

@@ -8,4 +8,8 @@ public class Button : MonoBehaviour
     {
         GameObject.FindGameObjectWithTag("NoteCreater").GetComponent<CreateNote>().addNoteNow();
     }
+    public void addCmdNow()
+    {
+        GameObject.FindGameObjectWithTag("CmdCreater").GetComponent<CreateCmd>().addCmdNow();
+    }
 }

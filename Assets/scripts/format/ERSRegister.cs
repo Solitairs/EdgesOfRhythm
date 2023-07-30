@@ -29,11 +29,12 @@ public class ERSRegister
     [Serializable]
     public struct Notes
     {
-        public int rotateType, hurtType, deterRoad, Type;
+        public int rotateType, hurtType, deterRoad, Type, ID;
         public float deterTime,startSpeed;
-        public Notes(int type, int rotateType, int hurtType,int deterRoad,float startSpeed, float deterTime)
+        public Notes(int ID, int Type, int rotateType, int hurtType,int deterRoad,float startSpeed, float deterTime)
         {
-            this.Type = type;
+            this.ID = ID;
+            this.Type = Type;
             this.rotateType = rotateType;
             this.hurtType = hurtType;
             this.deterRoad = deterRoad;
@@ -70,25 +71,36 @@ public class ERSRegister
         }
         noteNum--;
     }
-    public class cmp : IComparer
+    public class ECmp : IComparer
     {
-        public int Compare(object x, object y)
+        public int Compare(object x, object y)//降序
         {
             Notes a = (Notes)(x);
             Notes b = (Notes)(y);//然后直接强转（很蠢）
-            if (a.deterTime < b.deterTime) return -1;
-            else if (a.deterTime > b.deterTime) return 1;//大于0为x大于y
+            if (a.ID > b.ID) return -1;
+            else if (a.ID < b.ID) return 1;//大于0为x大于y
             else return 0;//等于0为x等于y
         }
     }
-    public void sort()
+    public class SCmp : IComparer
     {
-        IComparer Cmp = new cmp();
+        public int Compare(object x, object y)//升序
+        {
+            Notes a = (Notes)(x);
+            Notes b = (Notes)(y);//然后直接强转（很蠢）
+            if (a.ID < b.ID) return -1;
+            else if (a.ID > b.ID) return 1;//大于0为x大于y
+            else return 0;//等于0为x等于y
+        }
+    }
+    public void sort()//ID降序
+    {
+        IComparer Cmp = new ECmp();
         Array.Sort(notes, 0, noteNum, Cmp);
     }
-    public bool Save()
+    public void SaveSort()//ID升序
     {
-        sort();
-        return true;
+        IComparer Cmp = new ECmp();
+        Array.Sort(notes, 0, noteNum, Cmp);
     }
 }
