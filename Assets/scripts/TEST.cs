@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class TEST : MonoBehaviour
 {
-    void Update()
+    private int a = 0;
+    public ref int aa()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow)) Debug.Log("1");
-        if (Input.GetKeyDown(KeyCode.DownArrow)) Debug.Log("2");
-        if (Input.GetKeyDown(KeyCode.RightArrow)) Debug.Log("4");
-        if (Input.GetKeyDown(KeyCode.LeftArrow)) Debug.Log("3");
+        return ref a;
+    }
+    public void Start()
+    {
+        aa()=2;
+        Debug.Log(a);
     }
 }

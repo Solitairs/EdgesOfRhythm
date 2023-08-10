@@ -7,14 +7,14 @@ using UnityEngine;
 using UnityEngine.SocialPlatforms;
 using UnityEngine.UIElements;
 /*
-^N²é¿´Òô·ûÁĞ±í
-Tab´ò¿ªÉèÖÃ
-Alt+S±£´æµ±Ç°Ö¸Áî»òÒô·û
-Alt+O´ò¿ª
-Alt+P±£´æ
-N´´½¨Òô·û
-×óÓÒ¼ıÍ·ÌøÊ±¼ä1.5s
-¿Õ¸ñÔİÍ£»ò²¥·Å
+^Nï¿½é¿´ï¿½ï¿½ï¿½ï¿½ï¿½Ğ±ï¿½
+Tabï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+Alt+Sï¿½ï¿½ï¿½æµ±Ç°Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+Alt+Oï¿½ï¿½
+Alt+Pï¿½ï¿½ï¿½ï¿½
+Nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ï¿½ï¿½ï¿½Ò¼ï¿½Í·ï¿½ï¿½Ê±ï¿½ï¿½1.5s
+ï¿½Õ¸ï¿½ï¿½ï¿½Í£ï¿½ò²¥·ï¿½
  */
 public class GameController : MonoBehaviour
 {
@@ -43,13 +43,13 @@ public class GameController : MonoBehaviour
         register = new ERSRegister();
         register.Intialize();
         cmd = new ERSCommand();
-        //¼ÓÔØÒôÀÖ
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         string path;
         string local;
-        //»ñÈ¡±¾¹¤³ÌAssetsÂ·¾¶
+        //ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½AssetsÂ·ï¿½ï¿½
         path = Application.dataPath;
         path += "/Music";
-        //ÕâÀïMusicÊÇÒ»¸öÓëAssetsÍ¬¼¶µÄÎÄ¼ş¼Ğ£¨ÓÃÀ´´æ·ÅÒôÀÖ£©,local:ÒôÀÖÃû³Æ£¬.wav£ºÒôÀÖºó×º
+        //ï¿½ï¿½ï¿½ï¿½Musicï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½AssetsÍ¬ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ğ£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö£ï¿½,local:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ£ï¿½.wavï¿½ï¿½ï¿½ï¿½ï¿½Öºï¿½×º
         bool finded = false;
         if (Directory.Exists(path))
         {
@@ -57,7 +57,7 @@ public class GameController : MonoBehaviour
             FileInfo[] files = direction.GetFiles("*");
             for (int i = 0; i < files.Length; i++)
             {
-                //ºöÂÔ¹ØÁªÎÄ¼ş
+                //ï¿½ï¿½ï¿½Ô¹ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½
                 if (files[i].Name.EndsWith(".wav"))
                 {
                     finded = true;
@@ -69,7 +69,7 @@ public class GameController : MonoBehaviour
         }
         if (finded)
         {
-            //Ê¹ÓÃwwwÀà¼ÓÔØ²¥·Å
+            //Ê¹ï¿½ï¿½wwwï¿½ï¿½ï¿½ï¿½Ø²ï¿½ï¿½ï¿½
             StartCoroutine(Load(path));
         }
         else
@@ -153,11 +153,11 @@ public class GameController : MonoBehaviour
             }
         }
         ///////////////
-        if (false && Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.V) && GameObject.FindGameObjectWithTag("Settings") == null && GameObject.FindGameObjectWithTag("List") == null)
+        if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.V) && GameObject.FindGameObjectWithTag("Settings") == null && GameObject.FindGameObjectWithTag("List") == null)
         {
             showCmdsList();
         }
-        else if (false&&Input.GetKeyDown(KeyCode.V) && GameObject.FindGameObjectWithTag("Settings") == null && GameObject.FindGameObjectWithTag("List") == null)
+        else if (Input.GetKeyDown(KeyCode.V) && GameObject.FindGameObjectWithTag("Settings") == null && GameObject.FindGameObjectWithTag("List") == null)
         {
             if (GameObject.FindGameObjectWithTag("CmdCreater") != null)
             {
@@ -195,6 +195,7 @@ public class GameController : MonoBehaviour
         {
             field.text=Audio.time.ToString();
         }
+        
         if (Input.GetKeyDown(KeyCode.F1))
         {
             Application.Quit();

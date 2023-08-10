@@ -63,6 +63,7 @@
     <Compile Include="Assets\scripts\CUI\CUI04.cs" />
     <Compile Include="Assets\scripts\format\ERSCommand.cs" />
     <Compile Include="Assets\scripts\ChangeSettings.cs" />
+    <Compile Include="Assets\scripts\ForList\SetCmdsInformation.cs" />
     <Compile Include="Assets\scripts\GameController.cs" />
     <Compile Include="Assets\scripts\CUI\CUI06.cs" />
     <Compile Include="Assets\scripts\ForList\setNotesInformations.cs" />

@@ -11,8 +11,6 @@ public class SavingOrLoading : MonoBehaviour
     public void SaveDataByJSON() //保存
     {
         //优化信息
-        GameController.register.SaveSort();
-        GameController.cmd.SaveSort();
         Dictionary<int,int> ChangeID = new Dictionary<int,int>();
         for(int i=0;i< GameController.register.noteNum; i++)
         {
@@ -20,16 +18,29 @@ public class SavingOrLoading : MonoBehaviour
             GameController.register.notes[i].ID = i;
             ChangeID.Add(tid, i);
         }
-        for (int i = 0; i < GameController.register.noteNum; i++)
+        for (int i = 0; i < GameController.cmd.cmdNum; i++)
         {
-            if (ChangeID.ContainsKey(GameController.cmd.x01[i].id)) GameController.cmd.x01[i].id = ChangeID[GameController.cmd.x01[i].id];
-            else Debug.LogError("Notes have no id:" + GameController.cmd.x01[i].id.ToString() + "  From Cmds.");
+            if (GameController.cmd.cindex[i].type == 1)
+            {
+                if (ChangeID.ContainsKey(GameController.cmd.Getx01(i).id)) GameController.cmd.Getx01(i).id = ChangeID[GameController.cmd.Getx01(i).id];
+                else
+                {
+                    Debug.Log("Notes have no id:" + GameController.cmd.Getx01(i).id.ToString() + "  From Cmds-1.");
+                    GameController.cmd.delCmd(i);
+                }
+            }
+            if(GameController.cmd.cindex[i].type == 2)
+            {
+                if (ChangeID.ContainsKey(GameController.cmd.Getx02(i).id)) GameController.cmd.Getx02(i).id = ChangeID[GameController.cmd.Getx02(i).id];
+                else
+                {
+                    Debug.Log("Notes have no id:" + GameController.cmd.Getx01(i).id.ToString() + "  From Cmds-2.");
+                    GameController.cmd.delCmd(i);
+                }
+            }
         }
-        for (int i = 0; i < GameController.register.noteNum; i++)
-        {
-            if (ChangeID.ContainsKey(GameController.cmd.x02[i].id)) GameController.cmd.x02[i].id = ChangeID[GameController.cmd.x02[i].id];
-            else Debug.LogError("Notes have no id:" + GameController.cmd.x02[i].id.ToString() + "  From Cmds.");
-        }
+        GameController.register.SaveSort();
+        GameController.cmd.SaveSort();
         //开始序列化
         string directory = savePath.text + "\\";
         if (Directory.Exists(directory) == false)

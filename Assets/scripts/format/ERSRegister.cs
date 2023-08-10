@@ -58,8 +58,7 @@ public class ERSRegister
     }
     public void delNote(int id)
     {
-        if(noteNum<=0||id>=noteNum) return;
-        id++;
+        if(id<0||id>=noteNum) return;
         if (id == noteNum)
         {
             noteNum--;
@@ -67,7 +66,7 @@ public class ERSRegister
         }
         for (; id < noteNum; id++)
         {
-            notes[id - 1] = notes[id];
+            notes[id] = notes[id+1];
         }
         noteNum--;
     }

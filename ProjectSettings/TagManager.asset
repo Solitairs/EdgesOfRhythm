@@ -8,6 +8,7 @@ TagManager:
   - List
   - Settings
   - CmdCreater
+  - ChooseCmdType
   layers:
   - Default
   - TransparentFX

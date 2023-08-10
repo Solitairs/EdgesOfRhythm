@@ -94,13 +94,13 @@ public class ERSCommand
     };
     ///////////////////////////////////////////////////////////////   Register and Function   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public CommandIndex[] cindex = new CommandIndex[10001]; public int cmdNum = 0;
-    public c01[] x01 = new c01[4001]; public int n1 = 0;
-    public c02[] x02 = new c02[4001]; public int n2 = 0;
-    public c03[] x03 = new c03[4001]; public int n3 = 0;
-    public c04[] x04 = new c04[4001]; public int n4 = 0;
-    public c05[] x05 = new c05[4001]; public int n5 = 0;
-    public c06[] x06 = new c06[4001]; public int n6 = 0;
-    public c07[] x07 = new c07[4001]; public int n7 = 0;
+    private c01[] x01 = new c01[3001]; private int n1 = 0;
+    private c02[] x02 = new c02[3001]; private int n2 = 0;
+    private c03[] x03 = new c03[3001]; private int n3 = 0;
+    private c04[] x04 = new c04[3001]; private int n4 = 0;
+    private c05[] x05 = new c05[3001]; private int n5 = 0;
+    private c06[] x06 = new c06[3001]; private int n6 = 0;
+    private c07[] x07 = new c07[3001]; private int n7 = 0;
     public void commandOut()
     {
         //throw error
@@ -115,15 +115,14 @@ public class ERSCommand
         {
             return;
         }
-        id++;
         if (id == cmdNum)
         {
             cmdNum--;
             return;
         }
-        for(;id< cmdNum; id++)
+        for (;id< cmdNum; id++)
         {
-            cindex[id - 1] = cindex[id];
+            cindex[id] = cindex[id+1];
         }//把之后的命令向前移一位以覆盖
         cmdNum--;
     }
@@ -135,6 +134,10 @@ public class ERSCommand
         cmdNum++;
         n1++;
     }
+    public ref c01 Getx01(int id)
+    {
+        return ref x01[cindex[id].number];
+    }
     public void addx02(float time, c02 a02)
     {
         if (cmdNum > 10000 || n2 > 2000) commandOut();
@@ -142,6 +145,10 @@ public class ERSCommand
         x02[n2] = a02;
         cmdNum++;
         n2++;
+    }
+    public ref c02 Getx02(int id)
+    {
+        return ref x02[cindex[id].number];
     }
     public void addx03(float time, c03 a03)
     {
@@ -151,6 +158,10 @@ public class ERSCommand
         cmdNum++;
         n3++;
     }
+    public ref c03 Getx03(int id)
+    {
+        return ref x03[cindex[id].number];
+    }
     public void addx04(float time, c04 a04)
     {
         if (cmdNum > 10000 || n4 > 2000) commandOut();
@@ -158,6 +169,10 @@ public class ERSCommand
         x04[n4] = a04;
         cmdNum++;
         n4++;
+    }
+    public ref c04 Getx04(int id)
+    {
+        return ref x04[cindex[id].number];
     }
     public void addx05(float time, c05 a05)
     {
@@ -167,6 +182,10 @@ public class ERSCommand
         cmdNum++;
         n5++;
     }
+    public ref c05 Getx05(int id)
+    {
+        return ref x05[cindex[id].number];
+    }
     public void addx06(float time, c06 a06)
     {
         if (cmdNum > 10000 || n6 > 2000) commandOut();
@@ -175,6 +194,10 @@ public class ERSCommand
         cmdNum++;
         n6++;
     }
+    public ref c06 Getx06(int id)
+    {
+        return ref x06[cindex[id].number];
+    }
     public void addx07(float time, c07 a07)
     {
         if (cmdNum > 10000 || n7 > 2000) commandOut();
@@ -182,6 +205,10 @@ public class ERSCommand
         x07[n7] = a07;
         cmdNum++;
         n7++;
+    }
+    public ref c07 Getx07(int id)
+    {
+        return ref x07[cindex[id].number];
     }
     public class ECmp : IComparer
     {
@@ -205,12 +232,12 @@ public class ERSCommand
             else return 0;//等于0为x等于y
         }
     }
-    public void sort()//ID降序
+    public void sort()//time降序
     {
         IComparer Cmp = new ECmp();
         Array.Sort(cindex, 0, cmdNum, Cmp);
     }
-    public void SaveSort()//ID升序
+    public void SaveSort()//time升序
     {
         IComparer Cmp = new ECmp();
         Array.Sort(cindex, 0, cmdNum, Cmp);
