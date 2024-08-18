@@ -49,14 +49,14 @@ public class SpectralData
             notes[i].sortCmds();
         }
     }
-    public void sortDeciders()
+    public void sortDeciders()//对判定线进行排序
     {
         for (int i = 0; i < deciderNum; i++)
         {
             deciders[i].sortCmds();
         }
     }
-    public void addNote(float activeTime, float deterTime, int deterRoad, Cpos x, Cpos y, int type, float length=0)
+    public void addNote(float activeTime, float deterTime, int deterRoad, Cpos x, Cpos y, int type, float length=0)//新增音符
     {
         noteNum++;
         NotesData[] temp = notes;
@@ -168,6 +168,8 @@ public class SpectralData
     }
     public bool Save(string notePath, string deciderPath, string spectralPath)
     {
+        sortDeciders();
+        sortNotes();
         writer = new BinaryWriter(new FileStream(spectralPath,FileMode.Create));
         writer.Write(noteNum);
         writer.Write(deciderNum);
