@@ -49,19 +49,19 @@ public class OpenFile
             return null;
     }
     /// <summary>
-    /// 选择图片文件
+    /// 选择音乐文件
     /// </summary>
-    public static string ChooseImageFile()
+    public static string ChooseMusicFile()
     {
         OpenFileName OpenFileName = new OpenFileName();
         OpenFileName.structSize = Marshal.SizeOf(OpenFileName);
-        OpenFileName.filter = "图片文件 (*.png;*.jpg;*.jpeg)\0*.png;*.jpg;*.jpeg";
+        OpenFileName.filter = "音乐文件 (*.mp3;*.wav;*.flac)\0*.mp3;*.wav;*.flac";
         OpenFileName.file = new string(new char[1024]);
         OpenFileName.maxFile = OpenFileName.file.Length;
         OpenFileName.fileTitle = new string(new char[64]);
         OpenFileName.maxFileTitle = OpenFileName.fileTitle.Length;
         //OpenFileName.initialDir = Application.streamingAssetsPath.Replace('/', '\\');//默认路径
-        OpenFileName.title = "选择图片文件";
+        OpenFileName.title = "选择音乐文件";
         OpenFileName.flags = 0x00080000 | 0x00001000 | 0x00000800 | 0x00000008;
         if (WindowDll.GetOpenFileName(OpenFileName))
             return OpenFileName.file;

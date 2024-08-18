@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 public class SettingsController : MonoBehaviour
 {
-    public TMP_InputField BMP,dNum;
+    public TMP_InputField BMP,dNum,DS;
     private SpectralController SC;
     private void Start()
     {
@@ -30,6 +30,15 @@ public class SettingsController : MonoBehaviour
             return;
         }
         SC.spectralData.setDeciders(Convert.ToInt32(dNum.text));
+    }
+    public void SpeedChanged()
+    {
+        if (DS.text == "" || Convert.ToInt32(DS.text) <= 2)
+        {
+            DS.text = SC.DefaultSpeed.ToString();
+            return;
+        }
+        SC.DefaultSpeed = Convert.ToInt32(DS.text);
     }
     public void Cancel()
     {
