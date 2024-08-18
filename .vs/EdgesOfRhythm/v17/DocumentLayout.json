@@ -3,28 +3,24 @@
   "WorkspaceRootPath": "D:\\Program Files (x86)\\SomeGames(self)\\EdgesOfRhythm\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EE4EA249-6E37-B1C1-5EFE-47010FE48622}|Assembly-CSharp.csproj|D:\\Program Files (x86)\\SomeGames(self)\\EdgesOfRhythm\\assets\\scripts\\forui\\musiccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EE4EA249-6E37-B1C1-5EFE-47010FE48622}|Assembly-CSharp.csproj|d:\\program files (x86)\\somegames(self)\\edgesofrhythm\\assets\\scripts\\forui\\musiccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EE4EA249-6E37-B1C1-5EFE-47010FE48622}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\forui\\musiccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|d:\\program files (x86)\\somegames(self)\\edgesofrhythm\\assets\\scripts\\forui\\getmusicprogress.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:assets\\scripts\\forui\\getmusicprogress.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EE4EA249-6E37-B1C1-5EFE-47010FE48622}|Assembly-CSharp.csproj|d:\\program files (x86)\\somegames(self)\\edgesofrhythm\\assets\\scripts\\forui\\settingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EE4EA249-6E37-B1C1-5EFE-47010FE48622}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\forui\\settingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EE4EA249-6E37-B1C1-5EFE-47010FE48622}|Assembly-CSharp.csproj|D:\\Program Files (x86)\\SomeGames(self)\\EdgesOfRhythm\\assets\\scripts\\decidercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EE4EA249-6E37-B1C1-5EFE-47010FE48622}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\decidercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EE4EA249-6E37-B1C1-5EFE-47010FE48622}|Assembly-CSharp.csproj|D:\\Program Files (x86)\\SomeGames(self)\\EdgesOfRhythm\\assets\\scripts\\spectralcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EE4EA249-6E37-B1C1-5EFE-47010FE48622}|Assembly-CSharp.csproj|d:\\program files (x86)\\somegames(self)\\edgesofrhythm\\assets\\scripts\\spectralcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EE4EA249-6E37-B1C1-5EFE-47010FE48622}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\spectralcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EE4EA249-6E37-B1C1-5EFE-47010FE48622}|Assembly-CSharp.csproj|D:\\Program Files (x86)\\SomeGames(self)\\EdgesOfRhythm\\assets\\scripts\\classes\\openfile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EE4EA249-6E37-B1C1-5EFE-47010FE48622}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\classes\\openfile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EE4EA249-6E37-B1C1-5EFE-47010FE48622}|Assembly-CSharp.csproj|D:\\Program Files (x86)\\SomeGames(self)\\EdgesOfRhythm\\assets\\scripts\\notecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EE4EA249-6E37-B1C1-5EFE-47010FE48622}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\notecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EE4EA249-6E37-B1C1-5EFE-47010FE48622}|Assembly-CSharp.csproj|D:\\Program Files (x86)\\SomeGames(self)\\EdgesOfRhythm\\assets\\scripts\\decidercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EE4EA249-6E37-B1C1-5EFE-47010FE48622}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\decidercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,8 +30,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SettingsController.cs",
+              "DocumentMoniker": "D:\\Program Files (x86)\\SomeGames(self)\\EdgesOfRhythm\\Assets\\Scripts\\forUI\\SettingsController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\forUI\\SettingsController.cs",
+              "ToolTip": "D:\\Program Files (x86)\\SomeGames(self)\\EdgesOfRhythm\\Assets\\Scripts\\forUI\\SettingsController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\forUI\\SettingsController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACYAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-18T09:44:39.312Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -44,50 +53,27 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\forUI\\MusicController.cs",
               "ToolTip": "D:\\Program Files (x86)\\SomeGames(self)\\EdgesOfRhythm\\Assets\\Scripts\\forUI\\MusicController.cs",
               "RelativeToolTip": "Assets\\Scripts\\forUI\\MusicController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAzAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-18T07:07:00.671Z",
+              "WhenOpened": "2024-08-18T09:41:21.348Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "getMusicProgress.cs",
-              "DocumentMoniker": "D:\\Program Files (x86)\\SomeGames(self)\\EdgesOfRhythm\\Assets\\Scripts\\forUI\\getMusicProgress.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\forUI\\getMusicProgress.cs",
-              "ToolTip": "D:\\Program Files (x86)\\SomeGames(self)\\EdgesOfRhythm\\Assets\\Scripts\\forUI\\getMusicProgress.cs",
-              "RelativeToolTip": "Assets\\Scripts\\forUI\\getMusicProgress.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAcAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-18T06:59:58.705Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "OpenFile.cs",
-              "DocumentMoniker": "D:\\Program Files (x86)\\SomeGames(self)\\EdgesOfRhythm\\Assets\\Scripts\\Classes\\OpenFile.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Classes\\OpenFile.cs",
-              "ToolTip": "D:\\Program Files (x86)\\SomeGames(self)\\EdgesOfRhythm\\Assets\\Scripts\\Classes\\OpenFile.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Classes\\OpenFile.cs",
-              "ViewState": "AQIAACQAAAAAAAAAAAAIwD8AAAAiAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-17T14:53:26.805Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "SpectralController.cs",
               "DocumentMoniker": "D:\\Program Files (x86)\\SomeGames(self)\\EdgesOfRhythm\\Assets\\Scripts\\SpectralController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\SpectralController.cs",
               "ToolTip": "D:\\Program Files (x86)\\SomeGames(self)\\EdgesOfRhythm\\Assets\\Scripts\\SpectralController.cs",
               "RelativeToolTip": "Assets\\Scripts\\SpectralController.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAADwv0AAAAA1AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-17T14:00:52.278Z"
+              "WhenOpened": "2024-08-17T14:00:52.278Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "NoteController.cs",
               "DocumentMoniker": "D:\\Program Files (x86)\\SomeGames(self)\\EdgesOfRhythm\\Assets\\Scripts\\NoteController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\NoteController.cs",
@@ -95,11 +81,12 @@
               "RelativeToolTip": "Assets\\Scripts\\NoteController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-17T14:00:46.471Z"
+              "WhenOpened": "2024-08-17T14:00:46.471Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "DeciderController.cs",
               "DocumentMoniker": "D:\\Program Files (x86)\\SomeGames(self)\\EdgesOfRhythm\\Assets\\Scripts\\DeciderController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\DeciderController.cs",
@@ -107,7 +94,8 @@
               "RelativeToolTip": "Assets\\Scripts\\DeciderController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-17T14:00:41.024Z"
+              "WhenOpened": "2024-08-17T14:00:41.024Z",
+              "EditorCaption": ""
             }
           ]
         }

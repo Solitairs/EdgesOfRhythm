@@ -7,38 +7,36 @@ using TMPro;
 public class SettingsController : MonoBehaviour
 {
     public TMP_InputField BMP,dNum,DS;
-    private SpectralController SC;
     private void Start()
     {
-        SC = GameObject.Find("SpectralController").GetComponent<SpectralController>();
-        BMP.text = SC.spectralData.BPM.ToString();
+        BMP.text = SpectralController.spectralData.BPM.ToString();
     }
     public void BPMChanged()
     {
         if (BMP.text=="" || Convert.ToInt32(BMP.text) <= 0)
         {
-            BMP.text = SC.spectralData.BPM.ToString();
+            BMP.text = SpectralController.spectralData.BPM.ToString();
             return;
         }
-        SC.spectralData.BPM = Convert.ToInt32(BMP.text);
+        SpectralController.spectralData.BPM = Convert.ToInt32(BMP.text);
     }
     public void DecidersChanged()
     {
         if (dNum.text == "" || Convert.ToInt32(dNum.text) <= 2)
         {
-            dNum.text = SC.spectralData.deciderNum.ToString();
+            dNum.text = SpectralController.spectralData.deciderNum.ToString();
             return;
         }
-        SC.spectralData.setDeciders(Convert.ToInt32(dNum.text));
+        SpectralController.spectralData.setDeciders(Convert.ToInt32(dNum.text));
     }
     public void SpeedChanged()
     {
         if (DS.text == "" || Convert.ToInt32(DS.text) <= 2)
         {
-            DS.text = SC.DefaultSpeed.ToString();
+            DS.text = SpectralController.DefaultSpeed.ToString();
             return;
         }
-        SC.DefaultSpeed = Convert.ToInt32(DS.text);
+        SpectralController.DefaultSpeed = Convert.ToInt32(DS.text);
     }
     public void Cancel()
     {

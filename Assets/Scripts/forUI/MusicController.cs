@@ -6,6 +6,7 @@ using TMPro;
 using System;
 using System.IO;
 using UnityEngine.Networking;
+using System.Drawing;
 
 public class MusicController : MonoBehaviour
 {
@@ -22,7 +23,11 @@ public class MusicController : MonoBehaviour
     }
     public void ControlPlay()
     {
-        if(AudioSource.isPlaying) AudioSource.Pause();
+        if (AudioSource.isPlaying)
+        {
+            AudioSource.Pause();
+            AudioSource.time = Mathf.Round(AudioSource.time / (60F / SpectralController.spectralData.BPM / SpectralController.size)) * (60F / SpectralController.spectralData.BPM / SpectralController.size);
+        }
         else AudioSource.Play();
     }
     public void ChooseMusicFile()

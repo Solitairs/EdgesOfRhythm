@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\Classes\OpenFile.cs" />
     <Compile Include="Assets\Scripts\Classes\SpectralData.cs" />
     <Compile Include="Assets\Scripts\NoteController.cs" />
+    <Compile Include="Assets\Scripts\forUI\FController.cs" />
     <Compile Include="Assets\Scripts\forUI\MusicController.cs" />
     <Compile Include="Assets\Scripts\DeciderController.cs" />
     <Compile Include="Assets\Scripts\forUI\SettingsController.cs" />
