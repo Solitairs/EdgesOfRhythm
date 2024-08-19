@@ -8,13 +8,17 @@ public class SpectralController : MonoBehaviour
     public Transform canvas;
     public static int size = 2;
     public static float DefaultSpeed = 50;
-    public float gameTime;
     public UnityEngine.Object Settings;
+    public GameObject deciderPool;
     public static SpectralData spectralData=new SpectralData();
     public KeyCode[] KeyCodes;
+    public AudioSource audioSource;
+    public float gameTime { get { return audioSource.time; } private set { audioSource.time = value; } }
     public DeciderController FocusDecider;
     public Transform[] transforms;
     public static float targetX=1;
+    public static NoteController[] Notes;
+    public static DeciderController[] Deciders;
     private bool isAltDown;
     public void size2()
     {
@@ -47,7 +51,8 @@ public class SpectralController : MonoBehaviour
         targetX = transforms[0].position.x;
         gameTime = 0;
         isAltDown = false;
-        spectralData.setDeciders(9);
+        spectralData.setDeciders(9,deciderPool);
+        audioSource=GameObject.FindGameObjectWithTag("audio").GetComponent<AudioSource>();
         Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, true);
         transform.position = new Vector3(Camera.main.ScreenToWorldPoint(new Vector2(Screen.currentResolution.width / 2, Screen.currentResolution.height / 2)).x, Camera.main.ScreenToWorldPoint(new Vector2(Screen.currentResolution.width / 2, Screen.currentResolution.height / 2)).y);
     }
@@ -55,7 +60,7 @@ public class SpectralController : MonoBehaviour
     {
         Instantiate(Settings, canvas);
     }
-    void reloadSpectral()
+    public static void reloadSpectral()
     {
 
     }
@@ -73,7 +78,13 @@ public class SpectralController : MonoBehaviour
         if (isAltDown && Input.GetKeyDown(KeyCode.A))
         {
             //Ä¬ÈÏ´¹Ö±ÏÂÂä
-            spectralData.addNote(gameTime - 8, Mathf.Round(gameTime / (60 / spectralData.BPM/size)) * (60 / spectralData.BPM/size), FocusDecider.id, new SpectralData.Cpos(FocusDecider.transform.position.x), new SpectralData.Cpos(0, -DefaultSpeed, FocusDecider.transform.position.x + 8 * DefaultSpeed, 0, 0, 0, 0, 0, 0), 0);
+            if(audioSource.clip!=null)
+                spectralData.addNote(
+                    gameTime - 8, Mathf.Round(gameTime / (60 / spectralData.BPM/size)) * (60 / spectralData.BPM/size), FocusDecider.id, 
+                    new SpectralData.Cpos(FocusDecider.transform.position.x), 
+                    new SpectralData.Cpos(0, -DefaultSpeed, FocusDecider.transform.position.x + 8 * DefaultSpeed, 0, 0, 0, 0, 0, 0), 0
+                    );
+            reloadSpectral();
         }
     }
 }

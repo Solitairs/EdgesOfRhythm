@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class NoteController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int id=-1;
+
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (id == -1)
+        {
+            transform.position = new Vector3(-8000, 0);
+            return;
+        }
+
     }
 }

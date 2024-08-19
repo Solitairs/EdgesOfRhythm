@@ -2,13 +2,22 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using UnityEngine;
 
 public class SpectralData
 {
-    public void setDeciders(int deciderNum)
+    public void setDeciders(int deciderNum,GameObject DeciderPool)
     {
         this.deciderNum = deciderNum;
         deciders=new DeciderData[deciderNum];
+        SpectralController.Deciders=new DeciderController[deciderNum];
+        for (int i = 0; i < deciderNum; i++)
+        {
+            deciders[i] = new DeciderData(-1920F + 3840 / (deciderNum + 1) * (i + 1), -840);
+            SpectralController.Deciders[i]=DeciderPool.transform.GetChild(i).GetComponent<DeciderController>();
+            SpectralController.Deciders[i].id = i;
+        }
+
     }
     public class cmpNote : IComparer //sort notes
     {
@@ -33,6 +42,10 @@ public class SpectralData
             a = 0; b = 0;
             this.c = c;
             b = 0;d = 0; e = 0;f = 0;g = 0;h = 0;i = 0;
+        }
+        public float TPos(float time)
+        {
+            return a*time*time+b*time+c+ d * (float)Math.Cos(time / 180 * 3.1415926 * e + f) + g * (float)Math.Sin(time / 180 * 3.1415926 * h + i);
         }
     }
     public int noteNum = 0,BPM=60;
@@ -138,7 +151,7 @@ public class SpectralData
             notes[i].cmdNum = 0;
             for(int j = 0; j < cmdNum; j++)
             {
-                notes[i].addCmd(readfloat(), readCPos(), readCPos(), readfloat(), readfloat());
+                notes[i].addCmd(readfloat(), readCPos(), readCPos(), readfloat(), readfloat(), readfloat(), readfloat(), readfloat());
             }
         }
         reader.Close();
@@ -196,6 +209,9 @@ public class SpectralData
                 writeCPos(notes[i].cmds[j].y);
                 writer.Write(notes[i].cmds[j].k);
                 writer.Write(notes[i].cmds[j].b);
+                writer.Write(notes[i].cmds[j].r);
+                writer.Write(notes[i].cmds[j].g);
+                writer.Write(notes[i].cmds[j].l);
             }
         }
         writer.Close();

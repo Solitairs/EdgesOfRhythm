@@ -43,14 +43,14 @@ public class NotesData
     {
         public float time; //call time
         public SpectralData.Cpos x, y; //translate value
-        public float k, b; //rotation value:kx+h
-        public Cmd(float time, SpectralData.Cpos x, SpectralData.Cpos y, float k, float b)
+        public float k, b, r, g, l; //rotation value:kx+h
+        public Cmd(float time, SpectralData.Cpos x, SpectralData.Cpos y, float k, float b, float r, float g, float l)
         {
             this.time = time; this.x = x; this.y = y;
-            this.k = k; this.b = b;
+            this.k = k; this.b = b; this.r = r; this.g = g; this.l = l;
         }
     }
-    public void addCmd(float time, SpectralData.Cpos x, SpectralData.Cpos y, float k, float b)
+    public void addCmd(float time, SpectralData.Cpos x, SpectralData.Cpos y, float k, float b, float r, float g, float l)
     {
         cmdNum++;
         Cmd[] temp = cmds;
@@ -59,7 +59,7 @@ public class NotesData
         {
             cmds[i] = temp[i];
         }
-        cmds[cmdNum-1]=new Cmd(time, x, y, k, b);
+        cmds[cmdNum-1]=new Cmd(time, x, y, k, b, r, g, l);
     }
     public void delCmd(int ID) //true index
     {

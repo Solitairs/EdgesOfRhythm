@@ -27,7 +27,7 @@ public class SettingsController : MonoBehaviour
             dNum.text = SpectralController.spectralData.deciderNum.ToString();
             return;
         }
-        SpectralController.spectralData.setDeciders(Convert.ToInt32(dNum.text));
+        SpectralController.spectralData.setDeciders(Convert.ToInt32(dNum.text),GameObject.FindGameObjectWithTag("SpectralController").GetComponent<SpectralController>().deciderPool);
     }
     public void SpeedChanged()
     {

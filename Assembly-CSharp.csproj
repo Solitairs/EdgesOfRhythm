@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\forUI\MusicController.cs" />
     <Compile Include="Assets\Scripts\DeciderController.cs" />
     <Compile Include="Assets\Scripts\forUI\SettingsController.cs" />
+    <Compile Include="Assets\Scripts\BeatAnimationController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
